@@ -1,14 +1,9 @@
-import { Component } from '@angular/core';
-import { ItemComponent } from '../item/item.component';
+import { Injectable } from '@angular/core';
+import { Item } from '../models/item';
 
-@Component({
-  selector: 'app-items-list',
-  imports: [ItemComponent],
-  templateUrl: './items-list.component.html',
-  styleUrl: './items-list.component.css',
-})
-export class ItemsListComponent {
-  PRODUCTS = [
+@Injectable({ providedIn: 'root' })
+export class FakeProductsDBService {
+  private items: Item[] = [
     {
       id: 1,
       name: 'Wireless Mouse',
@@ -34,7 +29,7 @@ export class ItemsListComponent {
       name: 'Coffee Maker',
       price: 79.95,
       category: 'Home Appliances',
-      inStock: true,
+      inStock: false,
       rating: 4.7,
       brand: 'Keurig',
       image: '../assets/coffeemachine.jpg',
@@ -47,7 +42,7 @@ export class ItemsListComponent {
       inStock: true,
       rating: 4.6,
       brand: 'Sony',
-      image: '../assets/runningshoes.jpg',
+      image: '../assets/wirelessheadphones.jpg',
     },
     {
       id: 5,
@@ -56,8 +51,22 @@ export class ItemsListComponent {
       category: 'Electronics',
       inStock: true,
       rating: 4.4,
-      brand: 'Manduka',
-      image: '../../assets/wirelessmouse.jpg',
+      brand: 'Asus',
+      image: '../assets/asusvistabook.jpg',
     },
   ];
+  constructor() {}
+  getAll() {
+    return [...this.items];
+  }
+  add(item: Item) {
+    let id = this.items.length + 1;
+    item.id = id;
+    this.items.push(item);
+  }
+  delete(index: number) {
+    if (index > -1 && index < this.items.length) {
+      this.items.splice(index, 1);
+    }
+  }
 }

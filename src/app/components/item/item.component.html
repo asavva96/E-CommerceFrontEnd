@@ -1,0 +1,35 @@
+<div class="max-w-sm relative rounded-3xl overflow-hidden shadow-lg bg-white hover:scale-105 hover:cursor-pointer">
+
+    <!-- Image -->
+    <div class="w-full aspect-[4/3] flex items-center justify-center bg-white">
+        @if (item.image =='') {
+        <img class="w-full h-full object-contain transition-transform" [src]="'../../../assets/no-image.png'" alt="" />
+        }@else {
+        <img class="w-full h-full object-contain transition-transform" [src]="item.image" [alt]="item.name" />
+        }
+    </div>
+
+    <!-- Product Brand and Name -->
+    <div class="px-6 py-2">
+        <div class="w-full flex items-center justify-between gap-4">
+            <div class="text-xl font-bold">{{ item.brand }}</div>
+            <div class="text-l font-medium">{{ item.name }}</div>
+        </div>
+    </div>
+    <!-- Availability badge-->
+    <div class="block text-center text-sm font-semibold py-2 rounded-full" [class.text-green-700]="item.inStock"
+        [class.text-red-700]="!item.inStock">
+        {{ item.inStock ? 'Available' : 'Out of stock' }}
+    </div>
+    <!-- Product Price and Add Button -->
+    <div class="px-6 py-2 flex justify-between items-center">
+        <div class="text-lg font-medium">€{{ item.price }}</div>
+        <button (click)="addToCard(item)" class="hover:cursor-pointer flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700
+            transition">
+            <mat-icon>add_shopping_cart</mat-icon>
+            Add
+        </button>
+    </div>
+
+
+</div>

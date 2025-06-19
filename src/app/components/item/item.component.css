@@ -1,0 +1,4 @@
+img {
+    mix-blend-mode: multiply;
+    /* or screen, overlay - test which works best */
+}

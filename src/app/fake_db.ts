@@ -1,4 +1,4 @@
-const PRODUCTS = [
+export const PRODUCTS = [
   {
     id: 1,
     name: 'Wireless Mouse',
@@ -7,7 +7,7 @@ const PRODUCTS = [
     inStock: true,
     rating: 4.5,
     brand: 'Logitech',
-    image: '',
+    image: '../assets/wirelessmouse.jpg',
   },
   {
     id: 2,
@@ -17,17 +17,17 @@ const PRODUCTS = [
     inStock: false,
     rating: 4.2,
     brand: 'Nike',
-    image: '',
+    image: '../assets/runningshoes.jpg',
   },
   {
     id: 3,
     name: 'Coffee Maker',
     price: 79.95,
     category: 'Home Appliances',
-    inStock: true,
+    inStock: false,
     rating: 4.7,
     brand: 'Keurig',
-    image: '',
+    image: '../assets/coffeemachine.jpg',
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const PRODUCTS = [
     inStock: true,
     rating: 4.6,
     brand: 'Sony',
-    image: '',
+    image: '../assets/wirelessheadphones.jpg',
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const PRODUCTS = [
     category: 'Electronics',
     inStock: true,
     rating: 4.4,
-    brand: 'Manduka',
-    image: '',
+    brand: 'Asus',
+    image: '../assets/asusvistabook.jpg',
   },
 ];

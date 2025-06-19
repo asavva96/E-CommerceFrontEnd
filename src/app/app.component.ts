@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ItemComponent } from './item/item.component';
-import { ItemsListComponent } from './items-list/items-list.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { ItemComponent } from './components/item/item.component';
+import { ItemsListComponent } from './components/items-list/items-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ItemsListComponent, NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'e-commerce';
+  title = 'E-Commerce';
 }
