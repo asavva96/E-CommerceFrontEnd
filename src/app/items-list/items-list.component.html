@@ -1,0 +1,10 @@
+<div class="p-6 bg-gray-100 min-h-screen">
+    <!-- grid to turn this div to a grid
+         grid-cols-1 will display 1 column on screens less than 640
+         sm:grid-cols-2  will display 1 column on screens less than  640 
+    -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+        @for (product of PRODUCTS; track $index) {
+        <app-item [item]="product"></app-item> }
+    </div>
+</div>
