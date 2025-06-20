@@ -4,6 +4,7 @@ export interface Item {
   price: number;
   category: string;
   inStock: boolean;
+  availableQty?: number;
   rating?: number;
   brand: string;
   image?: string;

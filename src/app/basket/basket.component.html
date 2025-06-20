@@ -1,0 +1,65 @@
+<div class="h-full grid grid-rows-[auto_1fr_auto] dark:bg-gray-900 text-white">
+    <!-- Header -->
+    <div class="h-[100px] flex justify-center items-center border-b border-gray-700 text-center">
+        <h1 class="font-bold text-xl">Products in basket</h1>
+    </div>
+
+    <!-- Desktop Table View -->
+    <div class="hidden sm:block overflow-x-auto px-4">
+        <table class="min-w-full border-2 text-sm sm:text-base">
+            <thead>
+                <tr class="border-b-2 bg-gray-800 text-white">
+                    <th class="py-2 px-4 text-left">#</th>
+                    <th class="py-2 px-4 text-left">Item</th>
+                    <th class="py-2 px-4 text-left">Brand</th>
+                    <th class="py-2 px-4 text-left">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of basketItems; track $index) {
+                <tr class="border-b text-center hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <td class="py-2 px-4">{{( $index+1 )}}</td>
+                    <td class="py-2 px-4">{{ item.name }}</td>
+                    <td class="py-2 px-4">{{ item.brand }}</td>
+                    <td class="py-2 px-4">€{{ item.price }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Mobile Card View -->
+    <div class="sm:hidden overflow-auto py-1 px-4 space-y-4">
+        @for (item of basketItems; track $index) {
+        <div
+            class="border border-gray-300 dark:border-gray-700 rounded-xl p-4 shadow-md bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+            <div class="flex justify-between mb-2">
+                <span class="font-semibold"></span>
+                <span>{{( $index+1 )}} </span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span class="font-semibold">Item:</span>
+                <span>{{ item.name }}</span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span class="font-semibold">Brand:</span>
+                <span>{{ item.brand }}</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="font-semibold">Price:</span>
+                <span>€{{ item.price }}</span>
+            </div>
+        </div>
+        }
+    </div>
+
+    <!-- Footer -->
+    <div class="w-full flex justify-evenly items-center p-4 border-t border-gray-700">
+        <div class="font-semibold">€{{totalPrice}}</div>
+        <button (click)="proceedToCheckOut()"
+            class="hover:cursor-pointer flex justify-center items-center gap-2 bg-green-900 text-white px-4 py-2 rounded-2xl hover:bg-gray-700 transition w-auto min-w-[40%]">
+            <mat-icon>shopping_cart_checkout</mat-icon>
+            Checkout
+        </button>
+    </div>
+</div>

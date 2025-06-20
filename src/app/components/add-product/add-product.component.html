@@ -1,9 +1,18 @@
-<div class="flex flex-col items-center justify-center min-h-screen ">
-    <h1 class="font-bold text-3xl text-center mb-10">Add Product</h1>
-    <div class="max-w-2xl h-full rounded overflow-hidden bg-white shadow-2xl p-10">
+<div class="flex flex-col items-center justify-center min-h-screen p-3 relative">
+
+    <div (click)="toggleProductAdded()" class="fixed z-50 h-14 rounded-2xl bg-green-600 text-white w-full left-0 px-4
+             md:w-[400px] md:left-1/2 md:-translate-x-1/2
+             transform transition-all duration-300 ease-in-out text-center" [ngClass]="{
+        'top-4 opacity-100': productAdded,
+        '-top-32 opacity-0': !productAdded
+      }">
+        <div class="p-4">Product successfully {{!isUpdatingItem? 'added':'updated'}}</div>
+    </div>
+    <h1 class="font-bold text-3xl text-center mb-10">{{!isUpdatingItem? 'Add':'Update'}} Product</h1>
+    <div class="max-w-2xl h-full rounded overflow-hidden bg-white shadow-sm p-10">
         <form class="max-w-md mx-auto row-auto" [formGroup]="formGroup" (ngSubmit)="submit()">
             <!-- Product Name -->
-            <mat-form-field class="w-full">
+            <mat-form-field class="w-full my-3">
                 <mat-label>Product Name</mat-label>
                 <input matInput formControlName="name" />
                 <mat-error *ngIf="formGroup.get('name')?.hasError('required')">
@@ -12,16 +21,16 @@
             </mat-form-field>
 
             <!-- Price -->
-            <mat-form-field class="w-full">
+            <mat-form-field class="w-full my-3">
                 <mat-label>Price (€)</mat-label>
-                <input matInput type="number" formControlName="price" />
+                <input matInput type="number" pattern="[0-9]*" formControlName="price" />
                 <mat-error *ngIf="formGroup.get('price')?.hasError('required')">
                     <strong>Price is required.</strong>
                 </mat-error>
             </mat-form-field>
 
             <!-- Category -->
-            <mat-form-field class="w-full">
+            <mat-form-field class="w-full my-3">
                 <mat-label>Category</mat-label>
                 <input matInput formControlName="category" />
                 <mat-error *ngIf="formGroup.get('category')?.hasError('required')">
@@ -32,26 +41,33 @@
 
 
             <!-- Rating -->
-            <mat-form-field class="w-full">
-                <mat-label>Rating (0–5)</mat-label>
-                <input matInput type="number" formControlName="rating" min="0" max="5" />
+            <mat-form-field class="w-full my-3">
+                <mat-label>Rating </mat-label>
+                <input matInput type="number" pattern="[0-9]*" formControlName="rating" min="0" max="5" />
+                <mat-hint>Range between 0-5</mat-hint>
             </mat-form-field>
 
             <!-- Brand -->
-            <mat-form-field class="w-full">
+            <mat-form-field class="w-full my-3">
                 <mat-label>Brand</mat-label>
                 <input matInput formControlName="brand" />
                 <mat-error *ngIf="formGroup.get('brand')?.hasError('required')">
                     <strong> Brand is required.</strong>
                 </mat-error>
             </mat-form-field>
+
             <div>
                 <!-- In Stock -->
                 <mat-checkbox formControlName="inStock">In Stock</mat-checkbox>
             </div>
             <!-- Submit Button -->
-            <button mat-raised-button color="primary" type="submit" [disabled]="formGroup.invalid">
+            <button *ngIf="!isUpdatingItem" mat-raised-button color="primary" type="submit"
+                [disabled]="formGroup.invalid">
                 Add Product
+            </button>
+            <button *ngIf="isUpdatingItem" (click)="updateProductInDB()" mat-raised-button color="primary"
+                type="button">
+                Update Product
             </button>
 
         </form>

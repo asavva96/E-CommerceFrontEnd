@@ -69,4 +69,10 @@ export class FakeProductsDBService {
       this.items.splice(index, 1);
     }
   }
+  updateProduct(id: number, item: Item) {
+    var index = this.items.findIndex((item) => item.id == id);
+    if (index > -1) {
+      this.items[index] = item;
+    }
+  }
 }
