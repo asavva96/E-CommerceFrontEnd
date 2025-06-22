@@ -1,10 +1,18 @@
-<div class="p-6 min-h-screen">
-    <!-- grid to turn this div to a grid
-         grid-cols-1 will display 1 column on screens less than 640
-         sm:grid-cols-2  will display 1 column on screens less than  640 
+<div class="grid grid-cols-1  lg:grid-cols-[200px_1fr]">
+    <app-filter></app-filter>
+    <div class="p-6 mx-10 rounded-2xl min-h-screen bg-white">
+
+        <!-- grid display
+        1 column on small screens
+        2 columns on medium screens
+        3 columns on large screens 
+        5 columns on x-large screens
+        gap between each column 
+
     -->
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 justify-items-stretch">
-        @for (product of PRODUCTS; track $index) {
-        <app-item [item]="product"></app-item> }
+        <div class="grid  sm:grid-cols-[70%] md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-5 justify-center ">
+            @for (product of PRODUCTS; track $index) {
+            <app-item [item]="product"></app-item> }
+        </div>
     </div>
 </div>

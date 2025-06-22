@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ItemComponent } from '../item/item.component';
 import { FakeProductsDBService } from '../../services/fakeProductsDBservice';
+import { FilterComponent } from '../filter/filter.component';
 @Component({
   selector: 'app-items-list',
-  imports: [ItemComponent],
+  imports: [ItemComponent, FilterComponent],
   templateUrl: './items-list.component.html',
   styleUrl: './items-list.component.css',
 })

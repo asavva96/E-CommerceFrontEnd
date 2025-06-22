@@ -1,15 +1,14 @@
-<div class="h-full relative flex flex-col justify-between rounded-4xl shadow-lg bg-white">
-    <button (click)="updateProduct(item)"
-        class="absolute left-2 hover:cursor-pointer flex justify-center items-center p-2 rounded-xl bg-gray-800 hover:bg-gray-600">
+<div class="h-full max-w-[500px] relative flex flex-col justify-between rounded-4xl shadow-md bg-white">
+    <button (click)="updateProduct(item)" matTooltip="Edit Product"
+        class="absolute top-2 left-2 hover:cursor-pointer flex justify-center items-center p-2 rounded-xl bg-gray-800 hover:bg-gray-600">
         <mat-icon style="color: white;">edit</mat-icon>
     </button>
+
     <!-- Image -->
     <div class="p-5">
-        <div class="w-full aspect-[4/3]  flex items-center justify-center bg-white">
-
-            <img class="w-full h-full object-contain transition-transform"
-                [src]="item.image!=''?item.image:'../../../assets/no-image.png'" [alt]="item.name" />
-
+        <div class="w-full aspect-[16/9] flex items-center justify-center">
+            <img class="w-full h-full object-contain mix-blend-multiply"
+                [src]="item.image !== '' ? item.image : '../../../assets/no-image.png'" [alt]="item.name" />
         </div>
     </div>
     <!-- Product Brand and Name -->
@@ -22,7 +21,7 @@
     <!-- Availability badge-->
     <div class="block text-center text-sm font-semibold py-2 rounded-full" [class.text-green-700]="item.inStock"
         [class.text-red-700]="!item.inStock">
-        {{ item.inStock ? 'Available' : 'Out of stock' }}
+        {{ item.inStock ? '' : 'Out of stock' }}
     </div>
     <!-- Product Price -->
     <div *ngIf="item.inStock" class="px-6 py-2 flex justify-between items-center">

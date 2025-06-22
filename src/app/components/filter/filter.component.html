@@ -1,0 +1,18 @@
+<div class="block lg:hidden">
+    <button mat-button (click)="showFiltersToggle()">
+        <mat-icon class="!w-auto !h-auto" style="font-size: 42px;">filter_alt</mat-icon>
+    </button>
+</div>
+<!-- Filter panel -->
+<div class="bg-gray-900 text-white p-4 rounded-2xl" [ngClass]="{
+    'hidden': !showFilters,       
+    'absolute z-10 h-full w-[60%] ': showFilters, 
+    'lg:relative lg:block lg:h-full lg:w-auto': true 
+  }">
+    <h1 class="font-bold text-2xl border-b-1 border-gray-400 mb-3">Filters</h1>
+    FILTERS WILL GO HERE
+    <!-- <div class="flex items-center space-x-2">
+        <span>Show Products in stock only</span>
+        <input type="checkbox" class="h-5 w-5" />
+    </div> -->
+</div>
